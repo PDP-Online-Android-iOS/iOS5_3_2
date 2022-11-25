@@ -8,12 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var textFieldEmail = ""
+    @State var textFieldPassword = ""
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        ZStack {
+            
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Email")
+                
+                TextField("Email", text: $textFieldEmail)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                Text("Password")
+                
+                TextField("Password", text: $textFieldPassword)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            
+            VStack(alignment: .center, spacing: 10) {
+                ProgressView()
+                
+                Text("Loading...")
+            }
         }
         .padding()
     }
